@@ -56,7 +56,7 @@
 }
 
 .dark {
-  /* Attractive Dark Mode Theme (Requested Palette: #cfdbd5, #e8eddf, #f5cb5c, #242423, #333533) */
+  /* Attractive Dark Mode Theme */
   --primary: #f5cb5c; /* Saffron/Gold accent */
   --primary-dark: #d4af37; /* Darker gold for hovers */
   --primary-light: #f9dea3; /* Lighter gold */
@@ -64,22 +64,22 @@
   --secondary: #333533; /* Jet */
   --secondary-light: #505250; 
   
-  --accent: #f5cb5c; /* Using the gold as the main accent too */
+  --accent: #f5cb5c;
   --accent-light: #f9dea3;
   
-  --bg-color: #242423; /* Eerie Black for main background */
-  --surface-color: #333533; /* Jet for cards/surfaces */
+  --bg-color: #242423; /* Eerie Black */
+  --surface-color: #333533; /* Jet */
   
-  --success: #34d399; /* Keeping semantic colors readable */
+  --success: #34d399;
   --warning: #f5cb5c; 
   --info: #60a5fa;
   
-  --text-main: #e8eddf; /* Isabelline (bright text) */
-  --text-muted: #cfdbd5; /* Alabaster (muted text) */
+  --text-main: #e8eddf; /* Isabelline */
+  --text-muted: #cfdbd5; /* Alabaster */
   
-  --glass-bg: rgba(36, 36, 35, 0.7); /* Based on #242423 */
-  --glass-card-bg: rgba(51, 53, 51, 0.7); /* Based on #333533 */
-  --glass-border: rgba(245, 203, 92, 0.15); /* Faint gold border for elegance */
+  --glass-bg: rgba(36, 36, 35, 0.7);
+  --glass-card-bg: rgba(51, 53, 51, 0.7);
+  --glass-border: rgba(245, 203, 92, 0.15);
   
   --gradient-1: #242423;
   --gradient-2: #333533;
@@ -131,28 +131,110 @@ code {
 }
 
 @keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===================== */
+/* Blob Animation - FIXED */
+/* ===================== */
+@keyframes blob {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(30px, -50px) scale(1.1); }
+  66%  { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Hide Scrollbar utility */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-color);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--text-muted);
-  border-radius: 4px;
+  border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #4f46e5, #818cf8, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .gradient-text {
+  background: linear-gradient(135deg, #f5cb5c, #f9dea3, #fbbf24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shimmer loading animation */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Glow pulse */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(79, 70, 229, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(79, 70, 229, 0.6); }
+}
+
+.glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Dots grid pattern */
+.dots-pattern {
+  background-image: radial-gradient(circle, rgba(99, 102, 241, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .dots-pattern {
+  background-image: radial-gradient(circle, rgba(245, 203, 92, 0.08) 1px, transparent 1px);
 }
