@@ -1,3 +1,4 @@
+﻿import { API_BASE_URL } from '../config';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -26,7 +27,7 @@ const Register = () => {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/register', formData);
+      const res = await axios.post(`${API_BASE_URL}/api/auth/register`, formData);
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data));
       navigate('/dashboard');
@@ -50,7 +51,7 @@ const Register = () => {
   return (
     <div className="min-h-screen flex bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
 
-      {/* ===== LEFT PANEL — Branding ===== */}
+      {/* ===== LEFT PANEL â€” Branding ===== */}
       <div className="hidden lg:flex lg:w-[52%] relative overflow-hidden flex-col justify-between p-12">
         {/* Animated gradient */}
         <div className="absolute inset-0 bg-animated-gradient" />
@@ -116,11 +117,11 @@ const Register = () => {
         </div>
 
         <div className="relative z-10">
-          <p className="text-white/40 text-sm">© 2026 UNITY Academic Platform</p>
+          <p className="text-white/40 text-sm">Â© 2026 UNITY Academic Platform</p>
         </div>
       </div>
 
-      {/* ===== RIGHT PANEL — Form ===== */}
+      {/* ===== RIGHT PANEL â€” Form ===== */}
       <div className="flex-1 flex items-center justify-center p-6 sm:p-10 lg:p-14 relative overflow-hidden">
         {/* Mobile bg blobs */}
         <div className="lg:hidden absolute top-1/3 right-1/4 w-72 h-72 bg-emerald-500 rounded-full mix-blend-multiply filter blur-[100px] opacity-10 animate-blob" />
@@ -277,3 +278,4 @@ const Register = () => {
 };
 
 export default Register;
+

@@ -1,3 +1,4 @@
+﻿import { API_BASE_URL } from '../config';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -55,7 +56,7 @@ const Opportunities = () => {
   useEffect(() => {
     const fetchOpps = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/opportunities');
+        const res = await axios.get(`${API_BASE_URL}/api/opportunities`);
         setOpportunities(res.data.data);
       } catch (err) {
         console.error(err);
@@ -180,7 +181,7 @@ const Opportunities = () => {
             initial={{ y: -10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             className="text-indigo-300 text-sm font-bold uppercase tracking-widest mb-2"
-          >✦ Browse & Apply</motion.p>
+          >âœ¦ Browse & Apply</motion.p>
           <motion.h1 
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -317,7 +318,7 @@ const Opportunities = () => {
                         whileHover={{ y: -2 }}
                         className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-lg dark:hover:shadow-slate-950/30 hover:border-indigo-100 dark:hover:border-indigo-900/50 transition-all group flex flex-col sm:flex-row overflow-hidden"
                       >
-                        {/* Left accent bar — category-colored */}
+                        {/* Left accent bar â€” category-colored */}
                         <div className={`w-1.5 sm:w-2 flex-shrink-0 ${catStyle.bar || 'bg-indigo-500'}`} />
                         
                         <div className="flex-grow p-6 flex flex-col sm:flex-row gap-5">
@@ -428,3 +429,4 @@ const Opportunities = () => {
 };
 
 export default Opportunities;
+

@@ -1,3 +1,4 @@
+﻿import { API_BASE_URL } from '../config';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
@@ -17,7 +18,7 @@ const OpportunityDetails = () => {
   useEffect(() => {
     const fetchOpp = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/opportunities/${id}`);
+        const res = await axios.get(`${API_BASE_URL}/api/opportunities/${id}`);
         setOpp(res.data.data);
       } catch (err) {
         console.error(err);
@@ -38,7 +39,7 @@ const OpportunityDetails = () => {
       formData.append('coverNote', applyForm.coverNote);
       if (applyForm.file) formData.append('resume', applyForm.file);
 
-      await axios.post(`http://localhost:5000/api/applications/${id}`, formData, {
+      await axios.post(`${API_BASE_URL}/api/applications/${id}`, formData, {
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'
@@ -312,3 +313,4 @@ const OpportunityDetails = () => {
 };
 
 export default OpportunityDetails;
+

@@ -1,3 +1,4 @@
+﻿import { API_BASE_URL } from '../config';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -20,7 +21,7 @@ const Login = () => {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const res = await axios.post(`${API_BASE_URL}/api/auth/login`, formData);
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data));
       navigate('/dashboard');
@@ -41,7 +42,7 @@ const Login = () => {
   return (
     <div className="min-h-screen flex bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
 
-      {/* ===== LEFT PANEL — Branding ===== */}
+      {/* ===== LEFT PANEL â€” Branding ===== */}
       <div className="hidden lg:flex lg:w-[55%] relative overflow-hidden flex-col justify-between p-12">
         {/* Animated gradient background */}
         <div className="absolute inset-0 bg-animated-gradient" />
@@ -91,11 +92,11 @@ const Login = () => {
         </div>
 
         <div className="relative z-10">
-          <p className="text-white/40 text-sm">© 2026 UNITY Academic Platform</p>
+          <p className="text-white/40 text-sm">Â© 2026 UNITY Academic Platform</p>
         </div>
       </div>
 
-      {/* ===== RIGHT PANEL — Form ===== */}
+      {/* ===== RIGHT PANEL â€” Form ===== */}
       <div className="flex-1 flex items-center justify-center p-6 sm:p-10 lg:p-16 relative overflow-hidden">
         {/* Mobile background elements */}
         <div className="lg:hidden absolute top-1/4 left-1/4 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-[100px] opacity-10 animate-blob" />
@@ -174,7 +175,7 @@ const Login = () => {
                   required
                   autoComplete="current-password"
                   className="block w-full px-4 py-3.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 placeholder-slate-400 text-slate-900 dark:text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all text-sm shadow-sm pr-12"
-                  placeholder="••••••••"
+                  placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                   value={formData.password}
                   onChange={handleChange}
                 />
@@ -221,3 +222,4 @@ const Login = () => {
 };
 
 export default Login;
+

@@ -1,3 +1,4 @@
+﻿import { API_BASE_URL } from '../config';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -27,7 +28,7 @@ const PostOpportunity = () => {
         payload.requirements.skills = payload.requirements.skills.split(',').map(s => s.trim());
       }
 
-      await axios.post('http://localhost:5000/api/opportunities', payload, {
+      await axios.post(`${API_BASE_URL}/api/opportunities`, payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
       navigate('/dashboard');
@@ -153,3 +154,4 @@ const PostOpportunity = () => {
 };
 
 export default PostOpportunity;
+

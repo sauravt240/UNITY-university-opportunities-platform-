@@ -1,10 +1,11 @@
+﻿import { API_BASE_URL } from '../config';
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Search, MapPin, Briefcase, GraduationCap, Clock, ArrowRight, Sparkles, Users, Building, TrendingUp, CheckCircle } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 
-// Animated counter component — uses useState + requestAnimationFrame (no MotionValue child render issue)
+// Animated counter component â€” uses useState + requestAnimationFrame (no MotionValue child render issue)
 const Counter = ({ target, suffix = '' }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -39,7 +40,7 @@ const Home = () => {
   useEffect(() => {
     const fetchFeatured = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/opportunities');
+        const res = await axios.get(`${API_BASE_URL}/api/opportunities`);
         setFeaturedOpps(res.data.data.slice(0, 3));
       } catch (err) {
         console.error('Failed to fetch featured opportunities', err);
@@ -235,7 +236,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-2">✦ Curated For You</p>
+              <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-2">âœ¦ Curated For You</p>
               <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-3">Featured Opportunities</h2>
               <p className="text-lg text-slate-500 dark:text-slate-400">The latest prestigious roles from top universities.</p>
             </div>
@@ -335,7 +336,7 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-3">✦ Simple Process</p>
+            <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-3">âœ¦ Simple Process</p>
             <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-4">How It <span className="gradient-text">Works</span></h2>
             <p className="text-lg text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
               Get started in under 5 minutes and connect with opportunities that match your goals.
@@ -381,7 +382,7 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-3">✦ Why UNITY</p>
+            <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-3">âœ¦ Why UNITY</p>
             <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-4">
               Built for <span className="gradient-text">Academic Excellence</span>
             </h2>
@@ -481,3 +482,4 @@ const Home = () => {
 };
 
 export default Home;
+

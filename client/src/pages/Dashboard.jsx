@@ -1,3 +1,4 @@
+﻿import { API_BASE_URL } from '../config';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -18,7 +19,7 @@ const Dashboard = () => {
         const token = localStorage.getItem('token');
         const config = { headers: { Authorization: `Bearer ${token}` } };
         
-        const oppsRes = await axios.get(`http://localhost:5000/api/opportunities`, config);
+        const oppsRes = await axios.get(`${API_BASE_URL}/api/opportunities`, config);
         const allOpps = oppsRes.data.data;
         
         const posted = allOpps.filter(opp => opp.postedBy._id === user._id || opp.postedBy === user._id);
@@ -27,7 +28,7 @@ const Dashboard = () => {
         setMyPostedOpps(posted);
         setAvailableOpps(available);
         
-        const appsRes = await axios.get(`http://localhost:5000/api/applications/student`, config);
+        const appsRes = await axios.get(`${API_BASE_URL}/api/applications/student`, config);
         setApplications(appsRes.data.data);
       } catch (err) {
         console.error('Error fetching dashboard data', err);
@@ -87,11 +88,11 @@ const Dashboard = () => {
               <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-emerald-400 rounded-full border-2 border-indigo-900 dark:border-slate-900" />
             </motion.div>
             <div>
-              <p className="text-indigo-300 dark:text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Welcome back 👋</p>
+              <p className="text-indigo-300 dark:text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Welcome back ðŸ‘‹</p>
               <h1 className="text-3xl font-extrabold text-white">{user.name}</h1>
               <p className="text-indigo-200 dark:text-slate-300 font-medium mt-0.5">
                 <span className="bg-white/15 px-2.5 py-0.5 rounded-full text-sm">{user.role}</span>
-                {' '}• {user.university?.name || user.university}
+                {' '}â€¢ {user.university?.name || user.university}
               </p>
             </div>
           </div>
@@ -357,3 +358,4 @@ const EmptyState = ({ icon: Icon, title, sub, action }) => (
 );
 
 export default Dashboard;
+
